@@ -14,6 +14,7 @@ library
     exposed-modules:  Aoc
     other-modules:
         Common,
+        Day1,
 
     build-depends:
         base ^>=4.18.0.0,

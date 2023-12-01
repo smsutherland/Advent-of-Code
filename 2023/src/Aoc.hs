@@ -1,6 +1,8 @@
 module Aoc (runDay) where
 
 import Common
+import Day1
+
 import Network.HTTP.Simple (httpBS, parseRequest, addRequestHeader, getResponseBody)
 import qualified Data.ByteString as BS
 import qualified Data.ByteString.UTF8 as BSU
@@ -30,7 +32,7 @@ downloadAOCInputMaybe dayNum = do
     else downloadAOCInput dayNum
 
 days :: [Day]
-days = []
+days = [day1]
 
 runDay :: Int -> IO (Int, Int)
 runDay dayNum = do
