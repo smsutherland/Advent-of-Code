@@ -1,0 +1,39 @@
+cabal-version:      3.0
+name:               aoc2023
+version:            0.1.0.0
+author:             Sagan Sutherland
+maintainer:         sagan@farthinghalearms.com
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Aoc
+    other-modules:
+        Common,
+
+    build-depends:
+        base ^>=4.18.0.0,
+        http-conduit,
+        bytestring,
+        directory,
+        split,
+        dotenv,
+        utf8-string,
+        case-insensitive,
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable aoc2023
+    import:           warnings
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:
+        base ^>=4.18.0.0,
+        aoc2023,
+    hs-source-dirs:   app
+    default-language: Haskell2010
