@@ -1,24 +1,23 @@
 module Aoc (runDay) where
 
 import Common
-import Day1
-
-import Network.HTTP.Simple (httpBS, parseRequest, addRequestHeader, getResponseBody)
+import Configuration.Dotenv (defaultConfig, loadFile)
 import qualified Data.ByteString as BS
 import qualified Data.ByteString.UTF8 as BSU
 import qualified Data.CaseInsensitive as CI
+import Day1
+import Network.HTTP.Simple (addRequestHeader, getResponseBody, httpBS, parseRequest)
 import System.Directory (doesFileExist)
-import Configuration.Dotenv (loadFile, defaultConfig)
 import System.Environment (getEnv)
 
 downloadAOCInput :: Int -> IO ()
 downloadAOCInput dayNum = do
   loadFile defaultConfig
   putStrLn $ "Downloading day " ++ show dayNum ++ "'s input..."
-  initReq <- (parseRequest $ "GET https://adventofcode.com/2023/day/" ++ show dayNum ++ "/input")
+  initReq <- parseRequest $ "GET https://adventofcode.com/2023/day/" ++ show dayNum ++ "/input"
   session <- getEnv "SESSION"
   let headedRequest = addRequestHeader (CI.mk $ BSU.fromString "cookie") (BSU.fromString $ "session=" <> session) initReq
-  
+
   response <- getResponseBody <$> httpBS headedRequest
   BS.writeFile ("input/day" ++ show dayNum ++ ".txt") response
   putStrLn "Input Downloaded!"
