@@ -1,3 +1,4 @@
 dist-newstyle/
 .env
 input/
+.stack-work/

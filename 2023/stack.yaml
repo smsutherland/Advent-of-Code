@@ -1,0 +1,14 @@
+resolver: nightly-2023-12-01
+
+packages:
+- .
+
+extra-deps:
+# - bytestring
+# - case-insensitive
+# - directory
+# - dotenv
+# - http-conduit
+# - split
+# - utf8-string
+
