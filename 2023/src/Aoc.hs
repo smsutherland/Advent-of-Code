@@ -6,6 +6,7 @@ import qualified Data.ByteString as BS
 import qualified Data.ByteString.UTF8 as BSU
 import qualified Data.CaseInsensitive as CI
 import Day1
+import Day2
 import Network.HTTP.Simple (addRequestHeader, getResponseBody, httpBS, parseRequest)
 import System.Directory (doesFileExist)
 import System.Environment (getEnv)
@@ -31,7 +32,7 @@ downloadAOCInputMaybe dayNum = do
     else downloadAOCInput dayNum
 
 days :: [Day]
-days = [day1]
+days = [day1, day2]
 
 runDay :: Int -> IO (Int, Int)
 runDay dayNum = do
