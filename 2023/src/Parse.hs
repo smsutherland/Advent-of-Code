@@ -44,6 +44,9 @@ stringP str =
 spanP :: (Char -> Bool) -> Parser String
 spanP = many . parseIf
 
+lineP :: Parser String
+lineP = spanP (/= '\n') <* charP '\n'
+
 parseIf :: (Char -> Bool) -> Parser Char
 parseIf f = Parser $ \input ->
   case uncons input of

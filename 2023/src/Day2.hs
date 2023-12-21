@@ -15,8 +15,8 @@ newtype Round = Round
   }
   deriving (Show, Eq)
 
-lineP :: Parser Game
-lineP =
+gameP :: Parser Game
+gameP =
   Game
     <$> (stringP "Game" *> ws *> numberP)
     <*> (charP ':' *> ws *> sepBy (charP ';' *> ws) roundP)
@@ -27,7 +27,7 @@ roundP =
     <$> sepBy (charP ',' *> ws) (bothP numberP (ws *> stringLitP))
 
 inputP :: Parser [Game]
-inputP = sepBy (charP '\n') lineP
+inputP = sepBy (charP '\n') gameP
 
 data GameH = GameH
   { numH :: Int,
