@@ -27,6 +27,9 @@ instance Alternative Parser where
   (Parser p1) <|> (Parser p2) =
     Parser $ \input -> p1 input <|> p2 input
 
+parse :: Parser a -> String -> Maybe a
+parse p i = snd <$> runParser p i
+
 charP :: Char -> Parser Char
 charP x = Parser f
   where

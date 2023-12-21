@@ -101,7 +101,7 @@ applyMap2 (m : ms) i = new ++ applyMap2 ms old
 day5 :: Day
 day5 input = (part1, part2)
   where
-    inp = snd . fromJust $ runParser inputP input
+    inp = fromJust $ parse inputP input
     inp2 = oneToTwo inp
     part1 = minimum $ foldl (\s m -> map (applyMap m) s) (seeds inp) (maps inp)
     part2 = fst . minimum $ foldl (flip applyMap2) (seeds2 inp2) (map parts $ maps2 inp2)

@@ -37,6 +37,6 @@ addCards [] _ _ = []
 day4 :: Day
 day4 input = (part1, part2)
   where
-    cards = snd . fromJust $ runParser (sepBy ws cardP) input
+    cards = fromJust $ parse (sepBy ws cardP) input
     part1 = sum $ map (\c -> quot (2 ^ numWins c) 2) cards
     part2 = countCards $ map (1,) cards

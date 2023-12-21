@@ -2,6 +2,7 @@ module Day2 (day2) where
 
 import Common
 import Data.List
+import Data.Maybe
 import Parse
 
 data Game = Game
@@ -66,6 +67,6 @@ possibleGame g = do
 day2 :: Day
 day2 input = (part1 l, part2 l)
   where
-    l = map handleGame . maybe undefined snd $ runParser inputP input
+    l = map handleGame . fromJust $ parse inputP input
     part1 = sum . map numH . filter possibleGame
     part2 = sum . map ((\x -> red x * green x * blue x) . maxRounds . roundsH)
