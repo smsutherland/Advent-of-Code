@@ -47,6 +47,9 @@ stringP str =
 spanP :: (Char -> Bool) -> Parser String
 spanP = many . parseIf
 
+wordP :: Parser String
+wordP = spanP (not . isSpace)
+
 lineP :: Parser String
 lineP = spanP (/= '\n') <* charP '\n'
 
