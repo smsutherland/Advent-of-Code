@@ -1,6 +1,8 @@
 const std = @import("std");
+
 const days = .{
     .day1 = @import("./01.zig").run,
+    .day2 = @import("./02.zig").run,
 };
 
 fn get_day_num() !u32 {
@@ -26,6 +28,7 @@ pub fn main() !void {
     const day = try get_day_num();
     const output = switch (day) {
         1 => try days.day1(),
+        2 => try days.day2(),
         else => {
             return;
         },
